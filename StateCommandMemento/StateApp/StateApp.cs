@@ -16,46 +16,81 @@ namespace Assignment2.StateCommandMemento.StateApp
             List<DisplayCommand> commands = new List<DisplayCommand>();
 
             Display display = new();
-            DisplayCommand command = new(display, "Karlsson");
-            DisplayCommand command2 = new(display, "Svenne");
-
+            DisplayCommand command;
             Machine machine = new Machine();
+
             
-            
-            
+
+
             while (true)
             {
-                if (machine.MachineState.GetType().Name.ToString() == "MachineOffState")
-                {
-                    commands.Clear();
-                    commands.Add(command);
-                    commands.Add(command2);
-                }
+                Console.WriteLine("[S] To start/stopp machine.");
+                Console.WriteLine("[C] To Enter a Command.");
+                Console.WriteLine("[Q] To Clear all Commands.");
+                Console.WriteLine("[Space] To Exit.");
 
                 var userinput = Console.ReadKey().Key;
                 switch (userinput)
                 {
-                    case ConsoleKey.Enter:
+                    case ConsoleKey.S:
+                        Console.Clear();
                         machine.PowerSwitch();
                         
                         break;
+                    case ConsoleKey.C:
+                        Console.Clear();
+                        commands.Add(command = new(display, GetUserCommand()));
+                        if (!GetMachineState(machine))
+                        {
+                            Console.WriteLine("Command will be exectuted when machine is started.");
+                        }
+                        break;
+                    case ConsoleKey.Q:
+                        
+                        Console.WriteLine("Command deleted.");
+                        break;
 
                     case ConsoleKey.Spacebar:
+                        Console.Clear();
                         Environment.Exit(0);
                         break;
 
                     default:
+                        Console.Clear();
                         Console.WriteLine("I dont know what you mean");
                         break;
                 }
                 
-                if (machine.MachineState.GetType().Name.ToString() == "MachineOnState")
+                if (GetMachineState(machine))
                 {
                     foreach (var item in commands)
                     {
                         item.Do();
                     }
+                    commands.Clear();
                 }
+            }
+        }
+
+        string GetUserCommand()
+        {
+            Console.Clear();
+            Console.WriteLine("Enter command:");
+            string input = Console.ReadLine();
+            Console.Clear();
+            return input;
+            
+
+        }
+        bool GetMachineState(Machine machine)
+        {
+            if (machine.MachineState.GetType().Name.ToString() == "MachineOnState")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

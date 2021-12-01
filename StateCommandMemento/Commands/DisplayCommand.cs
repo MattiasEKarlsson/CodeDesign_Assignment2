@@ -18,8 +18,12 @@ namespace Assignment2.StateCommandMemento.Commands
 
         public void Do()
         {
-            Console.WriteLine($"Displaying:");
+            Console.WriteLine("**********************");
+            Console.WriteLine($"Executing Command:");
             Display.Display(DisplayMessage);
+            Console.WriteLine("**********************");
         }
+
+        
     }
 }
