@@ -14,6 +14,7 @@ namespace Assignment2.AbstractFactory
 
         public void Run()
         {
+            Console.WriteLine("Abstract Factory");
             var factoryFactory = new FactoryFactory();
             var animalFactoryDog = factoryFactory.GetFactory("Dog");
             var animalFactoryCat = factoryFactory.GetFactory("Cat");

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment2.Adapter
 {
-    class PrintingInts
+    public class PrintingInts
     {
         // Du får INTE ändra på den här klassen
         public void Print(int number)

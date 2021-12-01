@@ -1,4 +1,6 @@
 ﻿using Assignment2.AbstractFactory;
+using Assignment2.Adapter;
+using Assignment2.Adapter.AdapterApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +12,19 @@ namespace Assignment2
     public class Application : IApplication
     {
         IAbstractFactoryApp AbstractFactory;
+        IAdapterApp Adapter;
 
-        public Application(IAbstractFactoryApp abstractFactory)
+        public Application(IAbstractFactoryApp abstractFactory, IAdapterApp adapter)
         {
             AbstractFactory = abstractFactory;
+            Adapter = adapter;
         }
 
         public void Run()
         {
-            Console.WriteLine("Abstract Factory");
-            AbstractFactory.Run();
+            
+            //AbstractFactory.Run();
+            Adapter.Run();
             
         }
     }

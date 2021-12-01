@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment2.Adapter
 {
-    class ReturningStrings
+    public class ReturningStrings
     {
         // Du får INTE ändra på den här klassen
         public string ReturnString()
