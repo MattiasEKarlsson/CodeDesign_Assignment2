@@ -9,6 +9,8 @@ using Assignment2.AbstractFactory.Interfaces;
 using Assignment2.AbstractFactory.Models;
 using Assignment2.Adapter;
 using Assignment2.Adapter.AdapterApp;
+using Assignment2.Facade;
+using Assignment2.Facade.FacadeApp;
 using Autofac;
 
 namespace Assignment2
@@ -27,14 +29,12 @@ namespace Assignment2
 
             //Adapter
             builder.RegisterType<AdapterApp>().As<IAdapterApp>();
-            
+
+            //Facade
+            builder.RegisterType<FacadeApp>().As<IFacadeApp>();
+            builder.RegisterType<WordFacade>().As<IWordFacade>();
 
 
-            //builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-            //    .Where(i => i.Namespace.Contains("Adapter"))
-            //    .As(i => i.GetInterfaces()
-            //    .FirstOrDefault(n => n.Name == "I" + i.Name))
-            //       .AsImplementedInterfaces();
 
             return builder.Build();
         }

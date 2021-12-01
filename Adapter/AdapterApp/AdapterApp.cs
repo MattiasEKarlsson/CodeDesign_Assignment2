@@ -15,7 +15,7 @@ namespace Assignment2.Adapter.AdapterApp
             IService service = new Service();
             PrintingInts printingInts = new PrintingInts();
 
-            printingInts.Print(service.GetIt());
+            printingInts.Print(service.ConvertStringToInt());
         }
     }
 }

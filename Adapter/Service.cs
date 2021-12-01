@@ -9,7 +9,7 @@ namespace Assignment2.Adapter
     public  class Service : IService
     {
         ReturningStrings returnString = new ReturningStrings();
-        public int GetIt()
+        public int ConvertStringToInt()
         {
             return Int32.Parse(returnString.ReturnString());
         }

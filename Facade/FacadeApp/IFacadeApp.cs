@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2.Adapter
+namespace Assignment2.Facade.FacadeApp
 {
-    public interface IService
+    public interface IFacadeApp
     {
-        int ConvertStringToInt();
+        void Run();
     }
 }

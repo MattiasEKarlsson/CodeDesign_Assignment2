@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment2.Adapter
+namespace Assignment2.Facade
 {
-    public interface IService
+    public class Word
     {
-        int ConvertStringToInt();
+        public string InputWord { get; set; }
     }
 }
