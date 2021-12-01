@@ -11,6 +11,7 @@ using Assignment2.Adapter;
 using Assignment2.Adapter.AdapterApp;
 using Assignment2.Facade;
 using Assignment2.Facade.FacadeApp;
+using Assignment2.StateCommandMemento.StateApp;
 using Autofac;
 
 namespace Assignment2
@@ -34,7 +35,9 @@ namespace Assignment2
             builder.RegisterType<FacadeApp>().As<IFacadeApp>();
             builder.RegisterType<WordFacade>().As<IWordFacade>();
 
-
+            //StateCommandMemento
+            builder.RegisterType<StateApp>().As<IStateApp>();
+            
 
             return builder.Build();
         }
