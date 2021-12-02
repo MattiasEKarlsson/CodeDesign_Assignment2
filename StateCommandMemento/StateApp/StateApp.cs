@@ -18,21 +18,19 @@ namespace Assignment2.StateCommandMemento.StateApp
             Display display = new();
             DisplayCommand command;
             Machine machine = new Machine();
-
-            
-
+            MachineMemento machineMemento = machine.CreateMemento();
 
             while (true)
             {
-                Console.WriteLine("[S] To start/stopp machine.");
+                Console.WriteLine("[Space] To start/stopp machine.");
                 Console.WriteLine("[C] To Enter a Command.");
-                Console.WriteLine("[Q] To Clear all Commands.");
-                Console.WriteLine("[Space] To Exit.");
+                Console.WriteLine("[Q] To Clear all Commands and turn of machine.");
+                Console.WriteLine("[X] To Exit.");
 
                 var userinput = Console.ReadKey().Key;
                 switch (userinput)
                 {
-                    case ConsoleKey.S:
+                    case ConsoleKey.Spacebar:
                         Console.Clear();
                         machine.PowerSwitch();
                         
@@ -46,18 +44,19 @@ namespace Assignment2.StateCommandMemento.StateApp
                         }
                         break;
                     case ConsoleKey.Q:
-                        
-                        Console.WriteLine("Command deleted.");
+                        Console.Clear();
+                        machineMemento.Restore();
+                        commands.Clear();
                         break;
 
-                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.X:
                         Console.Clear();
                         Environment.Exit(0);
                         break;
 
                     default:
                         Console.Clear();
-                        Console.WriteLine("I dont know what you mean");
+                        Console.WriteLine("Invalid Input.");
                         break;
                 }
                 
@@ -74,13 +73,24 @@ namespace Assignment2.StateCommandMemento.StateApp
 
         string GetUserCommand()
         {
-            Console.Clear();
-            Console.WriteLine("Enter command:");
-            string input = Console.ReadLine();
-            Console.Clear();
-            return input;
-            
-
+            bool validInput = false;
+            while (!validInput)
+            {
+                Console.WriteLine($"Enter command");
+                string userInput = Console.ReadLine();
+                if (!String.IsNullOrWhiteSpace(userInput) )
+                {
+                    validInput = true;
+                    Console.Clear();
+                    return userInput;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter a command.");
+                }
+            }
+            return null;
         }
         bool GetMachineState(Machine machine)
         {

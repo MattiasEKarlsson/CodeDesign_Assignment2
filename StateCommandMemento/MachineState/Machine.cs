@@ -27,5 +27,9 @@ namespace Assignment2.StateCommandMemento.MachineState
                 MachineState = new MachineOffState();
             }
         }
+        public MachineMemento CreateMemento()
+        {
+            return new MachineMemento(this, MachineState);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Assignment2.StateCommandMemento.MachineState
         public void PowerSwitch()
         {
             Console.WriteLine("*******************");
-            Console.WriteLine("Machine starting...");
+            Console.WriteLine("Machine Power ON");
             Console.WriteLine("*******************");
         }
     }
